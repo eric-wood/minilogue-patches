@@ -1,1 +1,9 @@
 <h1>Patches</h1>
+
+<div class="row">
+  <% @patches.each do |patch| %>
+    <div class="patch one-quarter column">
+      <h4><%= link_to patch.name, patch_path(patch) %></h4>
+    </div>
+  <% end %>
+</div>
