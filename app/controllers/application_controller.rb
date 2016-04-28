@@ -8,4 +8,18 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  protected
+
+  def requires_logged_in_user
+    unless current_user
+      head :forbidden and return
+    end
+  end
+
+  def requires_logged_out_user
+    if current_user
+      head :forbidden and return
+    end
+  end
 end

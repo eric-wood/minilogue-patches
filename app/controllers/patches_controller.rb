@@ -1,5 +1,6 @@
 class PatchesController < ApplicationController
-  before_filter :fetch_user_patch, only: %w(show edit update)
+  before_filter :requires_logged_in_user, except: %i(index show)
+  before_filter :fetch_user_patch, only: %i(show edit update)
 
   def index
     @patches = Patch.all

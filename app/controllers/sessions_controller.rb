@@ -1,4 +1,10 @@
 class SessionsController < ApplicationController
+  before_filter :requires_logged_out_user, only: %i(new create)
+  before_filter :requires_logged_in_user, only: %i(destroy)
+
+  def new
+  end
+
   def create
     begin
       @user = User.from_omniauth(request.env['omniauth.auth'])
