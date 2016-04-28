@@ -1,8 +1,8 @@
-<h1>Patches</h1>
+<h2>PATCHES</h2>
 
-<div class="row">
+<div class="clearfix">
   <% @patches.each do |patch| %>
-    <div class="patch one-quarter column">
+    <div class="patch col col-3">
       <h4><%= link_to patch.name, patch_path(patch) %></h4>
     </div>
   <% end %>

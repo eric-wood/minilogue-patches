@@ -1,0 +1,12 @@
+<%= form_for patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+
+  <%= f.label :file %>
+  <%= f.file_field :file %>
+
+  <%= f.submit 'Upload Patch'%>
+<% end %>

@@ -9,7 +9,13 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= render 'layouts/header' %>
+
+  <div class="body-wrap">
+    <%= yield %>
+  </div>
+
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>

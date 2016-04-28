@@ -60,6 +60,9 @@ GEM
     execjs (2.6.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    file_validators (2.1.0)
+      activemodel (>= 3.0)
+      mime-types (>= 1.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.3)
@@ -182,6 +185,7 @@ DEPENDENCIES
   byebug
   carrierwave
   dotenv-rails
+  file_validators
   jbuilder (~> 2.0)
   jquery-rails
   omniauth

@@ -10,8 +10,39 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require skeleton.min.css
+ *= require normalize.scss
+ *= require basscss.min.css
  *= require_tree .
  *= require_self
  */
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import 'variables';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  color: $red;
+}
+
+header {
+  padding: 10px 20px;
+  //background-color: black;
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.body-wrap {
+  width: 1170px;
+  margin: 0 auto;
+}
