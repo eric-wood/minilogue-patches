@@ -4,6 +4,7 @@ class CreatePatches < ActiveRecord::Migration
       t.string :name
       t.text :notes
       t.integer :user_id
+      t.string :file
 
       t.timestamps null: false
     end

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160426021847) do
     t.string   "name"
     t.text     "notes"
     t.integer  "user_id"
+    t.string   "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
