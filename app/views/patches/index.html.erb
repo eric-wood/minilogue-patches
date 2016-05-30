@@ -1,3 +1,9 @@
+<% if @filter %>
+  <h1>Patches tagged with #<%= @filter %></h1>
+<% else %>
+  <h1>Patches</h1>
+<% end %>
+
 <ul class="patches">
   <%= render partial: 'patch', collection: @patches %>
 </ul>

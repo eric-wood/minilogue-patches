@@ -1,12 +1,23 @@
 <%= form_for patch do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: 'Name' %>
+  </div>
 
-  <%= f.label :notes %>
-  <%= f.text_area :notes %>
+  <div class="form-group">
+    <%= f.label :notes %>
+    <%= f.text_area :notes, placeholder: 'Anything else you want us to know about this patch' %>
+  </div>
 
-  <%= f.label :file %>
-  <%= f.file_field :file %>
+  <div class="form-group">
+    <%= f.label :file %>
+    <%= f.file_field :file %>
+  </div>
 
-  <%= f.submit 'Upload Patch'%>
+  <div class="form-group">
+    <%= f.label :tag_list, 'Tags' %>
+    <%= f.text_field :tag_list, placeholder: 'Tags, separated by commas', value: patch.tag_list.join(', ') %>
+  </div>
+
+  <%= f.submit 'Upload Patch' %>
 <% end %>

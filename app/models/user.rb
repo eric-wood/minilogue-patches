@@ -7,10 +7,11 @@ class User < ActiveRecord::Base
       provider: auth_hash['provider']
     )
 
-    user.name      = auth_hash['info']['name']
-    user.location  = auth_hash['info']['location']
-    user.image_url = auth_hash['info']['image']
-    user.url       = auth_hash['info']['urls'][user.provider.capitalize]
+    info = auth_hash['info']
+    user.name      = info['name']
+    user.location  = info['location']
+    user.image_url = info['image']
+    user.url       = info['urls'][user.provider.capitalize] if info['urls']
     user.save!
     user
   end

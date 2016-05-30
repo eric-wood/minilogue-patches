@@ -3,10 +3,17 @@
   color: $white;
   background-color: $lightBlue;
   border-radius: 4px;
+  cursor: pointer;
+  border: none;
 
   &:hover {
     background-color: $blue;
   }
+}
+
+button, input[type="submit"] {
+  @extend .btn;
+  font-size: 14px;
 }
 
 .alert-error {
@@ -17,3 +24,32 @@
   color: $red;
   background-color: $lightRed;
 }
+
+/*
+ * FORMS
+ */
+
+ .form-group {
+   margin: 15px 0;
+   font-size: 14px;
+
+   label {
+     display: block;
+     margin-bottom: 5px;
+     color: gray;
+   }
+
+   input {
+     display: block;
+     padding: 5px;
+
+     &[type="text"] {
+       min-width: 250px;
+     }
+   }
+
+   textarea {
+     min-width: 250px;
+     min-height: 100px;
+   }
+ }

@@ -7,7 +7,11 @@
         <%= icon 'plus', 'New Patch' %>
       <% end %>
 
-      <%= link_to 'Log In', login_path %>
+      <% if current_user %>
+        <%= link_to 'Log Out', logout_path %>
+      <% else %>
+        <%= link_to 'Log In', login_path %>
+      <% end %>
     </div>
   </div>
 </header>

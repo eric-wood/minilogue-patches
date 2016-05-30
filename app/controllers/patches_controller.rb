@@ -3,7 +3,12 @@ class PatchesController < ApplicationController
   before_filter :fetch_user_patch, only: %i(show edit update)
 
   def index
-    @patches = Patch.all
+    @filter = params[:tag]
+    if @filter
+      @patches = Patch.tagged_with(@filter)
+    else
+      @patches = Patch.all
+    end
   end
 
   def show
@@ -14,16 +19,28 @@ class PatchesController < ApplicationController
   end
 
   def create
-    @patch = Patch.create(patch_params)
+    @patch = Patch.new(patch_params)
 
-    redirect_to patch_path(@patch)
+    unless @patch.valid?
+      flash[:error] = @patch.errors.full_messages.to_sentence
+      redirect_to new_patch_path
+    else
+      @patch.save
+      redirect_to patch_path(@patch)
+    end
   end
 
   def edit
   end
 
   def update
-    @patch.update!(patch_params)
+    @patch.update(patch_params)
+
+    unless @patch.valid?
+      flash[:error] = @patch.errors.full_messages.to_sentence
+    else
+      @patch.save
+    end
 
     redirect_to patch_path(@patch)
   end
@@ -31,7 +48,7 @@ class PatchesController < ApplicationController
   private
 
   def patch_params
-    params.require(:patch).permit(:name, :notes, :file)
+    params.require(:patch).permit(:name, :notes, :file, :tag_list)
   end
 
   def fetch_user_patch

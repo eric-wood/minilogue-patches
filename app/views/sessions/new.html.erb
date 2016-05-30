@@ -1,3 +1,14 @@
-<h2>Log In</h2>
+<h1>Log In</h1>
 
-<%= link_to 'Google', '/auth/google' %>
+<ul>
+  <li>
+    <%= link_to '/auth/google', class: 'btn' do %>
+      <%= icon 'google', 'Google' %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to '/auth/facebook', class: 'btn' do %>
+      <%= icon 'facebook', 'Facebook' %>
+    <% end %>
+  </li>
+</ul>

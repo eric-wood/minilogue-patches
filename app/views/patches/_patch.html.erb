@@ -8,9 +8,11 @@
 
     <ul class="tags">
       <li><%= icon 'tags' %></li>
-      <li><a href="#">#edm</a></li>
-      <li><a href="#">#lead</a></li>
-      <li><a href="#">#saw</a></li>
+      <% patch.tag_list.each do |tag| %>
+        <li>
+          <%= link_to "##{tag}", patches_path(tag: tag) %>
+        </li>
+      <% end %>
     </ul>
   </div>
 

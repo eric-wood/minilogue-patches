@@ -68,4 +68,9 @@ header {
 main {
   background-color: white;
   padding: 15px 25px;
+
+  & > h1 {
+    border-bottom: solid $lightGray 1px;
+    margin-bottom: 15px;
+  }
 }

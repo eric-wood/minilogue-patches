@@ -29,11 +29,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'carrierwave'
 gem 'file_validators'
+
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
