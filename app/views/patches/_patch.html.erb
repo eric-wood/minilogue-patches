@@ -1,0 +1,38 @@
+<li class="patch">
+  <div class="patch-section">
+    <h2><%= link_to patch.name, patch_path(patch) %></h2>
+    <h5 class="subtext">
+      added by <a href="#"><%= patch.user.name %></a>
+      <%= time_ago_in_words patch.created_at %> ago
+    </h5>
+
+    <ul class="tags">
+      <li><%= icon 'tags' %></li>
+      <li><a href="#">#edm</a></li>
+      <li><a href="#">#lead</a></li>
+      <li><a href="#">#saw</a></li>
+    </ul>
+  </div>
+
+  <div class="patch-section">
+    <ul class="rating">
+      <li><%= icon 'star' %></li>
+      <li><%= icon 'star' %></li>
+      <li><%= icon 'star' %></li>
+      <li><%= icon 'star-half-empty' %></li>
+      <li><%= icon 'star-o' %></li>
+    </ul>
+    <ul class="actions">
+      <li>
+        <a href="#">
+          <%= icon 'download', 'Minilogue' %>
+        </a>
+      </li>
+      <li>
+        <%= link_to patch.file.url do %>
+          <%= icon 'download', 'Sysex File' %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</li>

@@ -10,39 +10,62 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require normalize.scss
- *= require basscss.min.css
- *= require_tree .
  *= require_self
  */
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import 'variables';
+@import 'reset';
+@import 'components';
+@import 'patches';
 
-* {
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+.constrained {
+  width: $bodyWidth;
+  margin: 0 auto;
 }
 
-a {
-  color: $red;
+body {
+  background-color: $white;
 }
 
 header {
-  padding: 10px 20px;
-  //background-color: black;
+  background-color: $darkBlue;
+  padding: 20px 0;
 
   a {
-    color: black;
-    text-decoration: none;
+    color: $white;
   }
 
-  h1 {
-    margin: 0;
+  .constrained {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .actions {
+    a {
+      @extend .btn;
+      border-right: solid $blue 1px;
+
+      &:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+        border-right: 0;
+      }
+    }
   }
 }
 
-.body-wrap {
-  width: 1170px;
-  margin: 0 auto;
+main {
+  background-color: white;
+  padding: 15px 25px;
 }

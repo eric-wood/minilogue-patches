@@ -63,6 +63,8 @@ GEM
     file_validators (2.1.0)
       activemodel (>= 3.0)
       mime-types (>= 1.0)
+    font-awesome-sass (4.6.2)
+      sass (>= 3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.3)
@@ -186,6 +188,7 @@ DEPENDENCIES
   carrierwave
   dotenv-rails
   file_validators
+  font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
   omniauth
@@ -200,4 +203,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.3

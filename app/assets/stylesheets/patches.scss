@@ -1,0 +1,56 @@
+.patch {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+
+  h2 a {
+    color: $darkBlue;
+  }
+
+  .subtext {
+    font-weight: normal;
+    color: gray;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: gray;
+    margin-top: 10px;
+
+    li + li {
+      margin-left: 5px;
+    }
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    color: gray;
+  }
+
+  .actions {
+    visibility: hidden;
+    font-size: 11px;
+    text-align: right;
+
+    li {
+      margin-top: 10px;
+    }
+  }
+
+  &:hover .actions {
+    visibility: visible;
+  }
+}
+
+.patches {
+  .patch:first-child {
+    padding-top: 0;
+  }
+
+  .patch + .patch {
+    border-top: solid $lightGray 1px;
+  }
+}

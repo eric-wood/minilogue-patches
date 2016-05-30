@@ -1,7 +1,13 @@
-<header class="flex border">
-  <div class="flex-auto">
-    <h1><%= link_to 'minilogue patches', root_path %></h1>
-  </div>
+<header>
+  <div class="constrained">
+    <h1 class="title header-section"><%= link_to 'MINILOGUEpatches', root_path %></h1>
 
-  <%= link_to 'New Patch', new_patch_path %>
+    <div class="actions header-section">
+      <%= link_to new_patch_path do %>
+        <%= icon 'plus', 'New Patch' %>
+      <% end %>
+
+      <%= link_to 'Log In', login_path %>
+    </div>
+  </div>
 </header>
