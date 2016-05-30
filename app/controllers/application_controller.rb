@@ -13,13 +13,14 @@ class ApplicationController < ActionController::Base
 
   def requires_logged_in_user
     unless current_user
-      head :forbidden and return
+      redirect_to login_path and return
     end
   end
 
   def requires_logged_out_user
     if current_user
-      head :forbidden and return
+      flash[:error] = "You can't do that while logged in!"
+      redirect_to root_path and return
     end
   end
 end

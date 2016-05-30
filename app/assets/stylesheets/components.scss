@@ -8,3 +8,12 @@
     background-color: $blue;
   }
 }
+
+.alert-error {
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: solid $red 1px;
+  color: $red;
+  background-color: $lightRed;
+}

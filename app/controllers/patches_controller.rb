@@ -33,7 +33,7 @@ class PatchesController < ApplicationController
   def patch_params
     params.require(:patch).permit(:name, :notes, :file)
   end
-  
+
   def fetch_user_patch
     @patch = Patch.find(params[:id])
   end
