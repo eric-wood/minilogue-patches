@@ -2,15 +2,28 @@
   <div class="constrained">
     <h1 class="title header-section"><%= link_to 'MINILOGUEpatches', root_path %></h1>
 
-    <div class="actions header-section">
-      <%= link_to new_patch_path do %>
-        <%= icon 'plus', 'New Patch' %>
-      <% end %>
+    <div class="header-section">
+      <div class="actions">
+        <%= link_to new_patch_path do %>
+          <%= icon 'plus', 'New Patch' %>
+        <% end %>
+
+        <% unless current_user %>
+          <%= link_to 'Log In', login_path %>
+        <% end %>
+      </div>
 
       <% if current_user %>
-        <%= link_to 'Log Out', logout_path %>
-      <% else %>
-        <%= link_to 'Log In', login_path %>
+        <div class="header-avatar">
+          <%= link_to user_path(current_user) do %>
+            <%= image_tag current_user.image_url %>
+          <% end %>
+
+          <ul class="user-actions">
+            <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
+            <li><%= link_to 'Log Out', logout_path %></li>
+          </ul>
+        </div>
       <% end %>
     </div>
   </div>

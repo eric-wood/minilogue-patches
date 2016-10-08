@@ -61,7 +61,33 @@ header {
         border-radius: 0 4px 4px 0;
         border-right: 0;
       }
+
+      &:only-child {
+        border-radius: 4px;
+        border-right: solid $blue 1px;
+      }
     }
+  }
+
+  .header-avatar {
+    margin-left: 20px;
+
+    img {
+      max-height: 50px;
+      border-radius: 50%;
+    }
+
+    &:hover .user-actions {
+      display: block;
+    }
+  }
+
+  .user-actions {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    padding: 10px;
+    background-color: $darkBlue;
   }
 }
 

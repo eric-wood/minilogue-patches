@@ -2,7 +2,7 @@
   <div class="patch-section">
     <h2><%= link_to patch.name, patch_path(patch) %></h2>
     <h5 class="subtext">
-      added by <a href="#"><%= patch.user.name %></a>
+      added by <%= link_to patch.user.name, user_path(patch.user) %>
       <%= time_ago_in_words patch.created_at %> ago
     </h5>
 
