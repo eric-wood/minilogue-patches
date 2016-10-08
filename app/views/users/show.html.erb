@@ -1,0 +1,10 @@
+<h1><%= @user.name %></h1>
+
+<%= image_tag @user.image_url %>
+
+<h2>Patches</h2>
+<ul>
+<% @user.patches.each do |patch| %>
+  <li><%= link_to patch.name, patch_path(patch) %></li>
+<% end %>
+</ul>

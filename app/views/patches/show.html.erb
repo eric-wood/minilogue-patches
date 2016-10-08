@@ -1,6 +1,8 @@
-<h2><%= @patch.name %></h2>
+<h1><%= @patch.name %></h1>
 
-<%= link_to 'Edit', edit_patch_path(@patch) %>
+<% if can? :update, @patch %>
+  <%= link_to 'Edit', edit_patch_path(@patch) %>
+<% end %>
 
 <p><%= @patch.notes %></p>
 

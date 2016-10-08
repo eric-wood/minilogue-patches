@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
+  end
+
   protected
 
   def requires_logged_in_user

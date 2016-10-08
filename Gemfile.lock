@@ -47,6 +47,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.4)
+    cancancan (1.15.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -190,6 +191,7 @@ DEPENDENCIES
   acts-as-taggable-on
   better_errors
   byebug
+  cancancan
   carrierwave
   dotenv-rails
   file_validators
@@ -209,4 +211,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.12.3
+   1.12.5
