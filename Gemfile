@@ -8,6 +8,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'font-awesome-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem 'babel-transpiler'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -41,6 +42,7 @@ group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'thin'
 end
 
 group :development do

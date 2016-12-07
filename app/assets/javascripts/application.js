@@ -13,3 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+MIDI.requestMIDI(); // get the midiAccess info ASAP for later use

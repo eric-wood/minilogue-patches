@@ -1,11 +1,14 @@
 window.MIDI = {
   INPUT_NAME: 'minilogue KBD/KNOB',
   OUTPUT_NAME: 'minilogue SOUND',
-  supportsMIDI: !!navigator.requestMIDIAccess,
+  HEADER: [0xF0,0x42,0x30,0x00,0x01,0x2C],
+  CURRENT_PATCH_REQUEST: [0x0E,0xF7],
+
+  supportsMIDI: Boolean(navigator.requestMIDIAccess),
   renderNoMIDIMessage: function() {
     console.error("Your browser doesn't support Web MIDI and that is unfortunate :(");
   },
-  requestMIDI: function() {
+  requestMIDI() {
     if(!this.supportsMIDI) {
       this.renderNoMIDIMessage();
       return;
@@ -17,7 +20,7 @@ window.MIDI = {
       this.output = this.getOutput(midiAccess);
     });
   },
-  requestSysex: function() {
+  requestSysex() {
     if(!this.supportsMIDI) {
       this.renderNoMIDIMessage();
       return;
@@ -27,12 +30,12 @@ window.MIDI = {
 
     return navigator.requestMIDIAccess({
       sysex: true
-    }).then(function(midiAccess) {
+    }).then((midiAccess) => {
       window.midiAccess = midiAccess;
     });
   },
 
-  getInput: function(midiAccess) {
+  getInput(midiAccess) {
     /*
      * NOTE: is there a more reliable way to go about this?
      * If Korg ever changes the IO names things will get pretty weird.
@@ -47,7 +50,7 @@ window.MIDI = {
 
     return result;
   },
-  getOutput: function(midiAccess) {
+  getOutput(midiAccess) {
     var result;
     midiAccess.outputs.forEach((output) => {
       if(output.name === this.OUTPUT_NAME) {
@@ -58,15 +61,26 @@ window.MIDI = {
     return result;
   },
 
-  requestPatch: function() {
-    // stream of magic bytes, just take my word of it
-    this.output.send([0xF0,0x42,0x30,0x00,0x01,0x2C,0x0E,0xF7]);
+  requestPatch() {
+    this.requestSysex().then(() => {
+      // stream of magic bytes, just take my word of it
+      this.output.addEventListener('midimessage', (message) => {
+        debugger
+        console.log(message.data);
+      });
+
+      this.output.send(this.HEADER.concat(this.CURRENT_PATCH_REQUEST));
+    });
   },
 
-  parsePatch: function(data) {
+  downloadPatch(patch) {
+    this.requestSysex().then(() => {
+      this.output.send();
+    });
+  },
+
+  parsePatch(data) {
     // TODO: Some basic patch parsing to go here.
     // First step will be auto-filling the patch name from this data
   }
 };
-
-MIDI.requestMIDI(); // get the midiAccess info ASAP for later use
