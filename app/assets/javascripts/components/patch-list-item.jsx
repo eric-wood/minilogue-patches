@@ -1,14 +1,14 @@
 class PatchListItem extends React.Component {
   render() {
     const patch = this.props.patch;
+    const timestamp = moment(patch.created_at).fromNow();
 
     return (
       <li className="patch">
         <div className="patch-section">
           <h2><a href="/patches/{patch.id}">{patch.name}</a></h2>
           <h5 className="subtext">
-            added by <a href="/users/{patch.user.id}">{patch.user.name}</a>
-            {patch.created_at} ago
+            added by <a href={patch.user.profile_url}>{patch.user.name}</a> {timestamp}
           </h5>
 
           <TagList tags={patch.tags} />
@@ -17,7 +17,7 @@ class PatchListItem extends React.Component {
         <div className="patch-section">
           <StarRating />
 
-          <ul>
+          <ul className="actions">
             <li>
               <a href="#">
                 <i className="fa fa-star" /> Minilogue

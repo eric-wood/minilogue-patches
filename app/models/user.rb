@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
       name: name,
       location: location,
       url: url,
-      image_url: image_url
+      image_url: image_url,
+      profile_url: Rails.application.routes.url_helpers.user_path(self)
     }
   end
 end

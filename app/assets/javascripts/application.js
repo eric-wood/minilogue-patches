@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require moment
 //= require react
 //= require react_ujs
 //= require components

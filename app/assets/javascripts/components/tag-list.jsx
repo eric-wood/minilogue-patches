@@ -1,7 +1,7 @@
 const TagList = ({ tags }) => {
   const tagEls = tags.map((tag) => {
     return (
-      <li>
+      <li key={tag}>
         <a href="#">{tag}</a>
       </li>
     );
@@ -9,7 +9,7 @@ const TagList = ({ tags }) => {
 
   return (
     <ul className="tags">
-      {tags}
+      {tagEls}
     </ul>
   );
 }
