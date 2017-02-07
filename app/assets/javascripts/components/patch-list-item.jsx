@@ -15,7 +15,7 @@ class PatchListItem extends React.Component {
         </div>
 
         <div className="patch-section">
-          <StarRating />
+          <StarRating value={Math.random()*5}/>
 
           <ul className="actions">
             <li>
