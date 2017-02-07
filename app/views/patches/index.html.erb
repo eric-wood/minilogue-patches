@@ -1,9 +1,7 @@
-<% if @filter %>
-  <h1>Patches tagged with #<%= @filter %></h1>
-<% else %>
-  <h1>Patches</h1>
-<% end %>
+<h1>Patches</h1>
 
-<ul class="patches">
+<%= react_component 'PatchList' %>
+
+<!-- <ul class="patches">
   <%= render partial: 'patch', collection: @patches %>
-</ul>
+</ul> -->

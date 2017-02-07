@@ -8,6 +8,11 @@ class PatchesController < ApplicationController
     else
       @patches = Patch.all
     end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @patches.to_json }
+    end
   end
 
   def show

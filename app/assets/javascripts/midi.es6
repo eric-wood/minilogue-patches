@@ -84,3 +84,5 @@ window.MIDI = {
     // First step will be auto-filling the patch name from this data
   }
 };
+
+MIDI.requestMIDI(); // get the midiAccess info ASAP for later use

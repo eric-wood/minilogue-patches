@@ -15,4 +15,14 @@ class User < ActiveRecord::Base
     user.save!
     user
   end
+
+  def as_json
+    return {
+      id: id,
+      name: name,
+      location: location,
+      url: url,
+      image_url: image_url
+    }
+  end
 end

@@ -8,4 +8,11 @@ class Patch < ActiveRecord::Base
   belongs_to :user
 
   acts_as_taggable
+
+  def as_json(options)
+    super(options).merge({
+      tags: tag_list,
+      user: user
+    })
+  end
 end

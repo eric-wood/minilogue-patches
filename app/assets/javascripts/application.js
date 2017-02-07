@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
-
-MIDI.requestMIDI(); // get the midiAccess info ASAP for later use
+//= require_self
