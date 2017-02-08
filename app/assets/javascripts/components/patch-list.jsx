@@ -17,7 +17,8 @@ class PatchList extends React.Component {
 
   render() {
     const patches = this.state.patches.map((patch) => {
-      return <PatchListItem patch={patch} key={patch.id} />;
+      const WrappedPathListItem = withMidi(PatchListItem);
+      return <WrappedPathListItem key={patch.id} patch={patch} />;
     });
 
     return (

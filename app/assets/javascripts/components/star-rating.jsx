@@ -17,7 +17,7 @@ class StarRating extends React.Component {
       fullStars.push(this.buildStar(<i className="fa fa-star" />, i));
     }
 
-    const hasHalfStar = this.state.value % 1 > 0.5;
+    const hasHalfStar = this.state.value % 1 >= 0.5;
     let halfStar;
     if(hasHalfStar) {
       halfStar = this.buildStar(<i className="fa fa-star-half-empty" />, numFullStars + 1);
