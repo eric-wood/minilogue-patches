@@ -16,13 +16,24 @@ button, input[type="submit"] {
   font-size: 14px;
 }
 
-.alert-error, .alert-alert {
+.alert {
   border-radius: 4px;
   padding: 10px 15px;
   margin-bottom: 15px;
-  border: solid $red 1px;
+  border: solid 1px;
+}
+
+.alert-error, .alert-alert {
+  @extend .alert;
+  border-color: $red;
   color: $red;
   background-color: $lightRed;
+}
+
+.alert-info {
+  border-color: $blue;
+  color: $white;
+  background-color: $lightBlue;
 }
 
 /*
@@ -56,3 +67,13 @@ button, input[type="submit"] {
      border: solid $lightGray 1px;
    }
  }
+
+.oscilloscope {
+  display: block;
+  width: 75px;
+  height: 37px;
+  margin-right: 10px;
+  background-color: black;
+  border: solid $white 2px;
+  border-radius: 4px;
+}

@@ -2,6 +2,7 @@ class PatchListItem extends React.Component {
   render() {
     const patch = this.props.patch;
     const timestamp = moment(patch.created_at).fromNow();
+    const canDownload = this.props.midi.output;
 
     return (
       <li className="patch">
@@ -19,9 +20,9 @@ class PatchListItem extends React.Component {
 
           <ul className="actions">
             <li>
-              <a href="#">
-                <i className="fa fa-star" /> Minilogue
-              </a>
+              {
+                canDownload ? <a href="#"><i className="fa fa-download" /> Minilogue</a> : null
+              }
             </li>
             <li>
               <a href="{patch.file.url}">

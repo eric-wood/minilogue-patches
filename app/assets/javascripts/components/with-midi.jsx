@@ -23,12 +23,13 @@ function withMidi(WrappedComponent) {
     }
 
     requestSuccess(access) {
-      access.addEventListener('onstatechange', this.refreshIO);
+      access.onstatechange = this.refreshIO;
+
       this.setState({
         access,
         status: 'available'
       });
-      
+
       this.refreshIO();
     }
 

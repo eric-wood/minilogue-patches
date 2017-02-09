@@ -7,6 +7,7 @@ gem 'react-rails'
 gem 'momentjs-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'webpack-rails'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
@@ -36,3 +37,5 @@ end
 group :production do
   gem 'pg'
 end
+
+gem 'foreman'

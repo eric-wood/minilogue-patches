@@ -4,37 +4,6 @@ window.MIDI = {
   HEADER: [0xF0,0x42,0x30,0x00,0x01,0x2C],
   CURRENT_PATCH_REQUEST: [0x0E,0xF7],
 
-  supportsMIDI: Boolean(navigator.requestMIDIAccess),
-  renderNoMIDIMessage: function() {
-    console.error("Your browser doesn't support Web MIDI and that is unfortunate :(");
-  },
-  requestMIDI() {
-    if(!this.supportsMIDI) {
-      this.renderNoMIDIMessage();
-      return;
-    }
-
-    return navigator.requestMIDIAccess().then((midiAccess) => {
-      window.midiAccess = midiAccess;
-      this.input = this.getInput(midiAccess);
-      this.output = this.getOutput(midiAccess);
-    });
-  },
-  requestSysex() {
-    if(!this.supportsMIDI) {
-      this.renderNoMIDIMessage();
-      return;
-    }
-
-    // TODO: display info message re: permissions
-
-    return navigator.requestMIDIAccess({
-      sysex: true
-    }).then((midiAccess) => {
-      window.midiAccess = midiAccess;
-    });
-  },
-
   getInput(midiAccess) {
     /*
      * NOTE: is there a more reliable way to go about this?
@@ -61,22 +30,18 @@ window.MIDI = {
     return result;
   },
 
-  requestPatch() {
-    this.requestSysex().then(() => {
-      // stream of magic bytes, just take my word of it
-      this.output.addEventListener('midimessage', (message) => {
-        debugger
-        console.log(message.data);
-      });
-
-      this.output.send(this.HEADER.concat(this.CURRENT_PATCH_REQUEST));
+  requestPatch(output) {
+    // stream of magic bytes, just take my word of it
+    output.addEventListener('midimessage', (message) => {
+      console.log(message.data);
     });
+
+    this.output.send(this.HEADER.concat(this.CURRENT_PATCH_REQUEST));
   },
 
-  downloadPatch(patch) {
-    this.requestSysex().then(() => {
-      this.output.send();
-    });
+  uploadPatch(output, patch) {
+    // idk do this later or somethin
+    this.output.send();
   },
 
   parsePatch(data) {

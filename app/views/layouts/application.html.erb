@@ -12,6 +12,8 @@
   <%= render 'layouts/header' %>
 
   <main class="constrained">
+    <%#= react_component 'WrappedMidiWarning' %>
+
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>">
         <%= message %>
