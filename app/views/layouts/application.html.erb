@@ -4,6 +4,8 @@
   <title>Minilogue Patches</title>
   <%= csrf_meta_tags %>
 
+  <%= stylesheet_link_tag *webpack_asset_paths('application', extension: 'css') %>
+  <%= javascript_include_tag *webpack_asset_paths('application', extension: 'js') %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
@@ -12,8 +14,6 @@
   <%= render 'layouts/header' %>
 
   <main class="constrained">
-    <%#= react_component 'WrappedMidiWarning' %>
-
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>">
         <%= message %>

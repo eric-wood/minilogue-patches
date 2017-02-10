@@ -1,3 +1,5 @@
+import React from 'react';
+
 class StarRating extends React.Component {
   constructor(props) {
     super(props);
@@ -69,3 +71,5 @@ StarRating.propTypes = {
 StarRating.defaultProps = {
   outOf: 5
 };
+
+export default StarRating;

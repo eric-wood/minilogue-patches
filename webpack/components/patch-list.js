@@ -1,3 +1,8 @@
+import React from 'react';
+import fetch from 'isomorphic-fetch';
+import PatchListItem from './patch-list-item';
+import withMidi from './with-midi';
+
 class PatchList extends React.Component {
   constructor(props) {
     super(props);
@@ -10,15 +15,16 @@ class PatchList extends React.Component {
   }
 
   patchSearch() {
-    $.getJSON('/patches').done((patches) => {
+    fetch('/patches.json').then((response) => {
+      return response.json();
+    }).then((patches) => {
       this.setState({ patches });
     });
   }
 
   render() {
     const patches = this.state.patches.map((patch) => {
-      const WrappedPathListItem = withMidi(PatchListItem);
-      return <WrappedPathListItem key={patch.id} patch={patch} />;
+      return <PatchListItem key={patch.id} patch={patch} midi={this.props.midi} />;
     });
 
     return (
@@ -28,3 +34,5 @@ class PatchList extends React.Component {
     );
   }
 }
+
+export default withMidi(PatchList);

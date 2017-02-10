@@ -1,4 +1,4 @@
-$(() => {
+export default () => {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const canvas = document.querySelector('.oscilloscope');
   const canvasContext = canvas.getContext('2d');
@@ -54,4 +54,4 @@ $(() => {
   }
 
   drawOscilloscope();
-});
+};

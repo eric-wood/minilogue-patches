@@ -1,4 +1,6 @@
-const TagList = ({ tags }) => {
+import React from 'react';
+
+export default ({ tags }) => {
   const tagEls = tags.map((tag) => {
     return (
       <li key={tag}>

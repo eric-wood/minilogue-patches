@@ -1,3 +1,8 @@
+import React from 'react';
+import moment from 'moment';
+import StarRating from './star-rating';
+import TagList from './tag-list';
+
 class PatchListItem extends React.Component {
   render() {
     const patch = this.props.patch;
@@ -35,3 +40,5 @@ class PatchListItem extends React.Component {
     );
   }
 }
+
+export default PatchListItem;

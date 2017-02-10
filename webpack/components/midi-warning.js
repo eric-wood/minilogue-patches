@@ -1,4 +1,6 @@
-function MidiWarning(props) {
+import withMidi from './with-midi';
+
+const MidiWarning = (props) => {
   const show = props.midi.status !== 'available';
 
   if (show) return (
@@ -8,4 +10,4 @@ function MidiWarning(props) {
   )
 }
 
-// window.WrappedMidiWarning = withMidi(MidiWarning);
+export default withMidi(MidiWarning);

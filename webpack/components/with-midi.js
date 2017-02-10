@@ -1,9 +1,12 @@
-function withMidi(WrappedComponent) {
+import React from 'react';
+import MIDI from '../midi';
+
+export default (WrappedComponent) => {
   return class extends React.Component {
     constructor(props) {
       super(props);
 
-      hasMidi = Boolean(navigator.requestMIDIAccess);
+      const hasMidi = Boolean(navigator.requestMIDIAccess);
 
       this.state = {
         access: undefined,
@@ -35,8 +38,8 @@ function withMidi(WrappedComponent) {
 
     refreshIO() {
       this.setState({
-        input: window.MIDI.getInput(this.state.access),
-        output: window.MIDI.getOutput(this.state.access)
+        input: MIDI.getInput(this.state.access),
+        output: MIDI.getOutput(this.state.access)
       });
     }
 

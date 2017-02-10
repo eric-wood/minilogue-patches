@@ -1,4 +1,4 @@
-window.MIDI = {
+export default {
   INPUT_NAME: 'minilogue KBD/KNOB',
   OUTPUT_NAME: 'minilogue SOUND',
   HEADER: [0xF0,0x42,0x30,0x00,0x01,0x2C],
