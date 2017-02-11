@@ -41,5 +41,6 @@ export const requestPatch = (output) => {
 
 export const uploadPatch = (output, patch) => {
   // idk do this later or somethin
-  this.output.send();
+  this.output.send(HEADER);
+  this.output.send(patch);
 };

@@ -1,9 +1,9 @@
 {
-  "name": "webpack-rails-example",
+  "name": "minilogue-patches",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint webpack --ext .jsx,.js"
+    "lint": "./node_modules/.bin/eslint webpack app/assets/javascripts --ext .jsx,.js"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",

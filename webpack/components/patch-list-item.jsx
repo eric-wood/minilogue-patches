@@ -2,8 +2,20 @@ import React from 'react';
 import moment from 'moment';
 import StarRating from './star-rating';
 import TagList from './tag-list';
+import uploadPatch from '../midi';
+import { propTypes as midiPropTypes } from './with-midi';
 
 class PatchListItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleUploadClick = this.handleUploadClick.bind(this);
+  }
+
+  handleUploadClick() {
+    uploadPatch(this.props.midi.output, null);
+  }
+
   render() {
     const patch = this.props.patch;
     const timestamp = moment(patch.created_at).fromNow();
@@ -26,7 +38,7 @@ class PatchListItem extends React.Component {
           <ul className="actions">
             <li>
               {
-                canDownload ? <a href=""><i className="fa fa-download" /> Minilogue</a> : null
+                canDownload ? <a href="" onClick={this.handleUploadClick}><i className="fa fa-download" /> Minilogue</a> : null
               }
             </li>
             <li>
@@ -55,12 +67,7 @@ PatchListItem.propTypes = {
       url: React.PropTypes.string
     })
   }).isRequired,
-  midi: React.PropTypes.shape({
-    access: React.PropTypes.object,
-    input: React.PropTypes.object,
-    output: React.PropTypes.object,
-    status: React.PropTypes.string
-  }).isRequired
+  midi: midiPropTypes.isRequired
 };
 
 export default PatchListItem;

@@ -1,7 +1,7 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
 import PatchListItem from './patch-list-item';
-import withMidi from './with-midi';
+import withMidi, { propTypes as midiPropTypes } from './with-midi';
 
 class PatchList extends React.Component {
   constructor(props) {
@@ -36,12 +36,7 @@ class PatchList extends React.Component {
 }
 
 PatchList.propTypes = {
-  midi: React.PropTypes.shape({
-    access: React.PropTypes.object,
-    input: React.PropTypes.object,
-    output: React.PropTypes.object,
-    status: React.PropTypes.string
-  }).isRequired
+  midi: midiPropTypes.isRequired
 };
 
 

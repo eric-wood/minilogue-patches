@@ -1,5 +1,5 @@
 import React from 'react';
-import withMidi from './with-midi';
+import withMidi, { propTypes as midiPropTypes } from './with-midi';
 
 const MidiWarning = (props) => {
   const show = props.midi.status !== 'available';
@@ -16,12 +16,7 @@ const MidiWarning = (props) => {
 };
 
 MidiWarning.propTypes = {
-  midi: React.PropTypes.shape({
-    access: React.PropTypes.object,
-    input: React.PropTypes.object,
-    output: React.PropTypes.object,
-    status: React.PropTypes.string
-  }).isRequired
+  midi: midiPropTypes.isRequired
 };
 
 export default withMidi(MidiWarning);

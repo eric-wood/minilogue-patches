@@ -54,3 +54,10 @@ export default (WrappedComponent, options = {}) => {
     }
   };
 };
+
+export const propTypes = React.PropTypes.shape({
+  access: React.PropTypes.object,
+  input: React.PropTypes.object,
+  output: React.PropTypes.object,
+  status: React.PropTypes.string
+});
