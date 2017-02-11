@@ -15,7 +15,7 @@
 
   <main class="constrained">
     <div id="midi-info"></div>
-    
+
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>">
         <%= message %>
@@ -25,6 +25,8 @@
     <%= yield %>
   </main>
 
+  <div id="minilogue-status"></div>
+  
   <%= render 'layouts/footer' %>
 
 </body>

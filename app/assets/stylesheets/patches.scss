@@ -16,6 +16,10 @@
     display: flex;
     align-items: center;
     color: gray;
+
+    li {
+      cursor: pointer;
+    }
   }
 
   .actions {
