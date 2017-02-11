@@ -9,7 +9,7 @@ class PatchList extends React.Component {
 
     this.state = {
       patches: []
-    }
+    };
 
     this.patchSearch();
   }
@@ -34,5 +34,15 @@ class PatchList extends React.Component {
     );
   }
 }
+
+PatchList.propTypes = {
+  midi: React.PropTypes.shape({
+    access: React.PropTypes.object,
+    input: React.PropTypes.object,
+    output: React.PropTypes.object,
+    status: React.PropTypes.string
+  }).isRequired
+};
+
 
 export default withMidi(PatchList, { sysex: true });

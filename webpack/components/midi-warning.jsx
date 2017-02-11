@@ -16,7 +16,12 @@ const MidiWarning = (props) => {
 };
 
 MidiWarning.propTypes = {
-  midi: React.PropTypes.object.isRequired
+  midi: React.PropTypes.shape({
+    access: React.PropTypes.object,
+    input: React.PropTypes.object,
+    output: React.PropTypes.object,
+    status: React.PropTypes.string
+  }).isRequired
 };
 
 export default withMidi(MidiWarning);

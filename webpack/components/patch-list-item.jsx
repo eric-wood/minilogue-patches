@@ -21,12 +21,12 @@ class PatchListItem extends React.Component {
         </div>
 
         <div className="patch-section">
-          <StarRating value={Math.random()*5}/>
+          <StarRating value={Math.random() * 5} />
 
           <ul className="actions">
             <li>
               {
-                canDownload ? <a href="#"><i className="fa fa-download" /> Minilogue</a> : null
+                canDownload ? <a href=""><i className="fa fa-download" /> Minilogue</a> : null
               }
             </li>
             <li>
@@ -40,5 +40,27 @@ class PatchListItem extends React.Component {
     );
   }
 }
+
+PatchListItem.propTypes = {
+  patch: React.PropTypes.shape({
+    name: React.PropTypes.string,
+    path: React.PropTypes.string,
+    created_at: React.PropTypes.string,
+    tags: React.PropTypes.array,
+    user: React.PropTypes.shape({
+      name: React.PropTypes.string,
+      profile_url: React.PropTypes.profile_url
+    }),
+    file: React.PropTypes.shape({
+      url: React.PropTypes.string
+    })
+  }).isRequired,
+  midi: React.PropTypes.shape({
+    access: React.PropTypes.object,
+    input: React.PropTypes.object,
+    output: React.PropTypes.object,
+    status: React.PropTypes.string
+  }).isRequired
+};
 
 export default PatchListItem;
