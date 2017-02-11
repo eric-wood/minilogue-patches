@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default ({ tags }) => {
+const TagList = ({ tags }) => {
   const tagEls = tags.map((tag) => {
     return (
       <li key={tag}>
-        <a href="#">{tag}</a>
+        <a href="">{tag}</a>
       </li>
     );
   });
@@ -14,4 +14,10 @@ export default ({ tags }) => {
       {tagEls}
     </ul>
   );
-}
+};
+
+TagList.propTypes = {
+  tags: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
+};
+
+export default TagList;

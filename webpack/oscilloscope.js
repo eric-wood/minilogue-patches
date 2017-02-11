@@ -5,7 +5,7 @@ export default () => {
 
   const analyser = audioContext.createAnalyser();
   analyser.fftSize = 2048;
-  const bufferLength = analyser.frequencyBinCount;
+  const bufferLength = analyser.frequencyBinCount / 2;
   const dataArray = new Uint8Array(bufferLength);
 
   const oscillator = audioContext.createOscillator();
@@ -19,7 +19,7 @@ export default () => {
   const HEIGHT = canvas.height;
 
   function drawOscilloscope() {
-    const draw = requestAnimationFrame(drawOscilloscope);
+    requestAnimationFrame(drawOscilloscope);
 
     analyser.getByteTimeDomainData(dataArray);
 
@@ -31,26 +31,28 @@ export default () => {
 
     canvasContext.beginPath();
 
-    const sliceWidth = WIDTH * 1.0 / bufferLength;
+    const sliceWidth = (WIDTH * 1.0) / bufferLength;
     let x = 0;
 
-    for(let i = 0; i < bufferLength; i++) {
+    for (let i = 0; i < bufferLength; i += 1) {
       const v = dataArray[i] / 128.0;
-      const y = v * HEIGHT/2;
+      const y = (v * HEIGHT) / 2;
 
       if (i === 0) {
-        canvasContext.moveTo(x,y);
+        canvasContext.moveTo(x, y);
       } else {
-        canvasContext.lineTo(x,y);
+        canvasContext.lineTo(x, y);
       }
 
       x += sliceWidth;
     }
 
-    canvasContext.lineTo(canvas.width, canvas.height/2);
+    canvasContext.lineTo(canvas.width, canvas.height / 2);
     canvasContext.stroke();
 
-    setInterval(() => oscillator.type = oscillatorTypes[Math.floor(Math.random() * oscillatorTypes.length)], 5000)
+    setInterval(() => {
+      oscillator.type = oscillatorTypes[Math.floor(Math.random() * oscillatorTypes.length)];
+    }, 5000);
   }
 
   drawOscilloscope();

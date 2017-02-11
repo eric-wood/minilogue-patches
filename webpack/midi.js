@@ -1,8 +1,8 @@
 export default {
   INPUT_NAME: 'minilogue KBD/KNOB',
   OUTPUT_NAME: 'minilogue SOUND',
-  HEADER: [0xF0,0x42,0x30,0x00,0x01,0x2C],
-  CURRENT_PATCH_REQUEST: [0x0E,0xF7],
+  HEADER: [0xF0, 0x42, 0x30, 0x00, 0x01, 0x2C],
+  CURRENT_PATCH_REQUEST: [0x0E, 0xF7],
 
   getInput(midiAccess) {
     /*
@@ -10,9 +10,9 @@ export default {
      * If Korg ever changes the IO names things will get pretty weird.
      * The ID appears device-specific, but then again I only have one Minilogue to test with...
      */
-    var result;
+    let result;
     midiAccess.inputs.forEach((input) => {
-      if(input.name === this.INPUT_NAME) {
+      if (input.name === this.INPUT_NAME) {
         result = input;
       }
     });
@@ -20,9 +20,9 @@ export default {
     return result;
   },
   getOutput(midiAccess) {
-    var result;
+    let result;
     midiAccess.outputs.forEach((output) => {
-      if(output.name === this.OUTPUT_NAME) {
+      if (output.name === this.OUTPUT_NAME) {
         result = output;
       }
     });
@@ -42,10 +42,5 @@ export default {
   uploadPatch(output, patch) {
     // idk do this later or somethin
     this.output.send();
-  },
-
-  parsePatch(data) {
-    // TODO: Some basic patch parsing to go here.
-    // First step will be auto-filling the patch name from this data
   }
 };

@@ -1,20 +1,17 @@
-// Example webpack configuration with asset fingerprinting in production.
-'use strict';
-
-var path = require('path');
-var webpack = require('webpack');
-var StatsPlugin = require('stats-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const StatsPlugin = require('stats-webpack-plugin');
 
 // must match config.webpack.dev_server.port
-var devServerPort = 3808;
+const devServerPort = 3808;
 
 // set NODE_ENV=production on the environment to add asset fingerprints
-var production = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === 'production';
 
-var config = {
+const config = {
   entry: {
     // Sources are expected to live in $app_root/webpack
-    'application': './webpack/application.js'
+    application: './webpack/application.jsx'
   },
 
   output: {
@@ -29,16 +26,20 @@ var config = {
   },
 
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015', 'stage-1']
+        }
       }
-    }]
+    ]
   },
 
   resolve: {
+    extensions: ['', '.js', '.jsx'],
     root: path.join(__dirname, '..', 'webpack')
   },
 
@@ -72,7 +73,7 @@ if (production) {
     port: devServerPort,
     headers: { 'Access-Control-Allow-Origin': '*' }
   };
-  config.output.publicPath = '//localhost:' + devServerPort + '/webpack/';
+  config.output.publicPath = `//localhost:${devServerPort}/webpack/`;
   // Source maps
   config.devtool = 'cheap-module-eval-source-map';
 }

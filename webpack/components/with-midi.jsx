@@ -1,7 +1,7 @@
 import React from 'react';
-import MIDI from '../midi';
+import { getInput, getOutput } from '../midi';
 
-export default (WrappedComponent) => {
+export default (WrappedComponent, options = {}) => {
   return class extends React.Component {
     constructor(props) {
       super(props);
@@ -19,8 +19,8 @@ export default (WrappedComponent) => {
       this.requestSuccess = this.requestSuccess.bind(this);
       this.requestFailure = this.requestFailure.bind(this);
 
-      if(hasMidi) {
-        navigator.requestMIDIAccess({ sysex: props.sysex })
+      if (hasMidi) {
+        navigator.requestMIDIAccess({ sysex: options.sysex })
           .then(this.requestSuccess, this.requestFailure);
       }
     }
@@ -38,12 +38,12 @@ export default (WrappedComponent) => {
 
     refreshIO() {
       this.setState({
-        input: MIDI.getInput(this.state.access),
-        output: MIDI.getOutput(this.state.access)
+        input: getInput(this.state.access),
+        output: getOutput(this.state.access)
       });
     }
 
-    requestFailure(error) {
+    requestFailure() {
       this.setState({
         status: 'declined'
       });

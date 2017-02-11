@@ -12,7 +12,7 @@ class PatchListItem extends React.Component {
     return (
       <li className="patch">
         <div className="patch-section">
-          <h2><a href="/patches/{patch.id}">{patch.name}</a></h2>
+          <h2><a href={patch.path}>{patch.name}</a></h2>
           <h5 className="subtext">
             added by <a href={patch.user.profile_url}>{patch.user.name}</a> {timestamp}
           </h5>
@@ -30,7 +30,7 @@ class PatchListItem extends React.Component {
               }
             </li>
             <li>
-              <a href="{patch.file.url}">
+              <a href={patch.file.url}>
                 <i className="fa fa-download" /> Sysex File
               </a>
             </li>

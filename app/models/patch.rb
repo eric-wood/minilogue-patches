@@ -12,7 +12,8 @@ class Patch < ActiveRecord::Base
   def as_json(options)
     super(options).merge({
       tags: tag_list,
-      user: user
+      user: user,
+      path: Rails.application.routes.url_helpers.patch_path(self)
     })
   end
 end

@@ -35,4 +35,4 @@ class PatchList extends React.Component {
   }
 }
 
-export default withMidi(PatchList);
+export default withMidi(PatchList, { sysex: true });
