@@ -12,8 +12,15 @@ class PatchListItem extends React.Component {
     this.handleUploadClick = this.handleUploadClick.bind(this);
   }
 
-  handleUploadClick() {
-    uploadPatch(this.props.midi.output, null);
+  handleUploadClick(event) {
+    event.preventDefault();
+
+    fetch(this.props.patch.file.url)
+    .then((response) => response.arrayBuffer)
+    .then((buffer) => {
+      // TODO: what in the hell is up with this
+      uploadPatch(this.props.midi.output, buffer);
+    });
   }
 
   render() {
@@ -29,7 +36,7 @@ class PatchListItem extends React.Component {
             added by <a href={patch.user.profile_url}>{patch.user.name}</a> {timestamp}
           </h5>
 
-          <TagList tags={patch.tags} />
+          <TagList tags={patch.tags} onTagSelect={this.props.onTagSelect} />
         </div>
 
         <div className="patch-section">
@@ -37,8 +44,8 @@ class PatchListItem extends React.Component {
 
           <ul className="actions">
             <li>
-              {
-                canDownload ? <a href="" onClick={this.handleUploadClick}><i className="fa fa-download" /> Minilogue</a> : null
+              {canDownload &&
+                <a href="" onClick={this.handleUploadClick}><i className="fa fa-download" /> Minilogue</a>
               }
             </li>
             <li>
@@ -67,6 +74,7 @@ PatchListItem.propTypes = {
       url: React.PropTypes.string
     })
   }).isRequired,
+  onTagSelect: React.PropTypes.func.isRequired,
   midi: midiPropTypes.isRequired
 };
 

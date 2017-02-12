@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, only: %i(show edit update)
+  resources :tags, only: %i(index)
 end

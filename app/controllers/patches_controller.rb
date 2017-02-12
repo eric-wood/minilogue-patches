@@ -2,9 +2,11 @@ class PatchesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @filter = params[:tag]
-    if @filter
-      @patches = Patch.tagged_with(@filter)
+    tags = params[:tags]
+    search = params[:q]
+
+    if tags
+      @patches = Patch.tagged_with(tags)
     else
       @patches = Patch.all
     end

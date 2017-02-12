@@ -11,7 +11,7 @@ export const getInput = (midiAccess) => {
    */
   let result;
   midiAccess.inputs.forEach((input) => {
-    if (input.name === this.INPUT_NAME) {
+    if (input.name === INPUT_NAME) {
       result = input;
     }
   });
@@ -22,7 +22,7 @@ export const getInput = (midiAccess) => {
 export const getOutput = (midiAccess) => {
   let result;
   midiAccess.outputs.forEach((output) => {
-    if (output.name === this.OUTPUT_NAME) {
+    if (output.name === OUTPUT_NAME) {
       result = output;
     }
   });
@@ -36,11 +36,11 @@ export const requestPatch = (output) => {
     console.log(message.data);
   });
 
-  this.output.send(this.HEADER.concat(this.CURRENT_PATCH_REQUEST));
+  output.send(HEADER.concat(CURRENT_PATCH_REQUEST));
 };
 
 export const uploadPatch = (output, patch) => {
   // idk do this later or somethin
-  this.output.send(HEADER);
-  this.output.send(patch);
+  output.send(HEADER);
+  output.send(patch);
 };
