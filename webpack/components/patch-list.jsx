@@ -21,6 +21,7 @@ class PatchList extends React.Component {
   }
 
   patchSearch() {
+    console.log(this.state.tag)
     const params = queryString({
       tags: this.state.tag,
       q: this.state.search
@@ -34,8 +35,7 @@ class PatchList extends React.Component {
   }
 
   searchTag(tag) {
-    this.setState({ tag });
-    this.patchSearch();
+    this.setState({ tag }, this.patchSearch);
   }
 
   handleSearchSubmit(event) {

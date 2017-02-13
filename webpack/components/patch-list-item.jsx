@@ -16,9 +16,8 @@ class PatchListItem extends React.Component {
     event.preventDefault();
 
     fetch(this.props.patch.file.url)
-    .then((response) => response.arrayBuffer)
+    .then((response) => response.arrayBuffer())
     .then((buffer) => {
-      // TODO: what in the hell is up with this
       uploadPatch(this.props.midi.output, buffer);
     });
   }
