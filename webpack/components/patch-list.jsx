@@ -21,7 +21,6 @@ class PatchList extends React.Component {
   }
 
   patchSearch() {
-    console.log(this.state.tag)
     const params = queryString({
       tags: this.state.tag,
       q: this.state.search
@@ -56,21 +55,25 @@ class PatchList extends React.Component {
     });
 
     return (
-      <div>
-        <h3>Search for {this.state.tag}</h3>
+      <div className="patch-list">
+        {/* <h3>Search for {this.state.tag}</h3>
         <form onSubmit={this.handleSearchSubmit}>
           <input
             placeholder="Search..."
             onChange={(e) => this.setState({ search: e.target.value })}
             value={this.state.search}
           />
-        </form>
+        </form> */}
 
-        <PatchListTags onTagSelect={this.searchTag} />
+        <div className="patch-list--container">
+          <div className="patch-list--sidebar">
+            <PatchListTags onTagSelect={this.searchTag} />
+          </div>
 
-        <ul className="patches">
-          {patches}
-        </ul>
+          <ul className="patch-list--patches">
+            {patches}
+          </ul>
+        </div>
       </div>
     );
   }

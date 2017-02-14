@@ -1,3 +1,29 @@
+
+.patch-list {
+  &--container {
+    display: flex;
+  }
+
+  &--sidebar {
+    width: 200px;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: solid $lightGray 1px;
+  }
+
+  &--patches {
+    width: 100%;
+
+    .patch:first-child {
+      padding-top: 0;
+    }
+
+    .patch + .patch {
+      border-top: solid $lightGray 1px;
+    }
+  }
+}
+
 .patch {
   display: flex;
   justify-content: space-between;
@@ -35,26 +61,16 @@
   &:hover .actions {
     visibility: visible;
   }
-}
 
-.patches {
-  .patch:first-child {
-    padding-top: 0;
-  }
+  ul.tags {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: gray;
+    margin-top: 10px;
 
-  .patch + .patch {
-    border-top: solid $lightGray 1px;
-  }
-}
-
-ul.tags {
-  display: flex;
-  align-items: center;
-  font-size: 10px;
-  color: gray;
-  margin-top: 10px;
-
-  li + li {
-    margin-left: 5px;
+    li + li {
+      margin-left: 5px;
+    }
   }
 }

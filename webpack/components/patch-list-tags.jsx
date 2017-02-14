@@ -24,10 +24,12 @@ class PatchListTags extends React.Component {
   render() {
     return (
       <div className="top-tags">
-        <h3>Top tags</h3>
+        <h3><i className="fa fa-tags" /> Top tags</h3>
         <TagList
           tags={this.state.tags}
           onTagSelect={this.props.onTagSelect}
+          showIcon={false}
+          showCount
         />
       </div>
     );
