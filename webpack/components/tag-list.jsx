@@ -16,7 +16,7 @@ const TagList = ({ tags, onTagSelect, showIcon, showCount }) => {
 
     return (
       <li key={tag.name}>
-        {tagEl}
+        {tagEl} {showCount ? `(${tag.taggings_count})` : null}
       </li>
     );
   });

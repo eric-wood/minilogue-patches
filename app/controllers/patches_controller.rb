@@ -51,6 +51,13 @@ class PatchesController < ApplicationController
     redirect_to patch_path(@patch)
   end
 
+  def download
+    patch = Patch.find(params[:id])
+    Patch.increment_counter(:download_count, patch.id)
+
+    send_data patch.file.read, filename: "#{patch.name}.syx"
+  end
+
   private
 
   def patch_params

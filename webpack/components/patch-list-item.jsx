@@ -9,13 +9,21 @@ class PatchListItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      downloadCount: props.patch.download_count
+    };
+
     this.handleUploadClick = this.handleUploadClick.bind(this);
   }
 
   handleUploadClick(event) {
     event.preventDefault();
 
-    fetch(this.props.patch.file.url)
+    this.setState({
+      downloadCount: this.state.downloadCount + 1
+    });
+
+    fetch(this.props.patch.download_url)
     .then((response) => response.arrayBuffer())
     .then((buffer) => {
       uploadPatch(this.props.midi.output, buffer);
@@ -41,14 +49,16 @@ class PatchListItem extends React.Component {
         <div className="patch-section">
           <StarRating value={Math.random() * 5} />
 
+          {this.state.downloadCount} downloads
+
           <ul className="actions">
             <li>
-              {canDownload &&
+              {true &&
                 <a href="" onClick={this.handleUploadClick}><i className="fa fa-download" /> Minilogue</a>
               }
             </li>
             <li>
-              <a href={patch.file.url}>
+              <a href={patch.download_url}>
                 <i className="fa fa-download" /> Sysex File
               </a>
             </li>
@@ -65,12 +75,11 @@ PatchListItem.propTypes = {
     path: React.PropTypes.string,
     created_at: React.PropTypes.string,
     tags: React.PropTypes.array,
+    download_count: React.PropTypes.number,
+    download_url: React.PropTypes.string,
     user: React.PropTypes.shape({
       name: React.PropTypes.string,
       profile_url: React.PropTypes.profile_url
-    }),
-    file: React.PropTypes.shape({
-      url: React.PropTypes.string
     })
   }).isRequired,
   onTagSelect: React.PropTypes.func.isRequired,

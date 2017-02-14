@@ -13,7 +13,8 @@ class Patch < ActiveRecord::Base
     super(options).merge({
       tags: tags,
       user: user,
-      path: Rails.application.routes.url_helpers.patch_path(self)
+      path: Rails.application.routes.url_helpers.patch_path(self),
+      download_url: Rails.application.routes.url_helpers.download_patch_path(self)
     })
   end
 end

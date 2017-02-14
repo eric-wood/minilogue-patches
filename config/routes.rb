@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :patches
+  resources :patches do
+    member do
+      get :download
+    end
+  end
   root to: 'patches#index'
 
   get '/login', to: 'sessions#new'

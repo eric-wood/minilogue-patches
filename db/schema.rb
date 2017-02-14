@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008142634) do
+ActiveRecord::Schema.define(version: 20170214035333) do
 
   create_table "patches", force: :cascade do |t|
     t.string   "name"
     t.text     "notes"
     t.integer  "user_id"
     t.string   "file"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "download_count", default: 0
   end
 
   add_index "patches", ["user_id"], name: "index_patches_on_user_id"
