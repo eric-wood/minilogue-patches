@@ -1,10 +1,21 @@
-/* eslint no-console:0 */
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-//
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
-// layout file, like app/views/layouts/application.html.erb
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PatchList from './components/patch-list';
+import MidiWarning from './components/midi-warning';
+import MinilogueStatus from './components/minilogue-status';
+import oscilloscope from './oscilloscope';
 
-console.log('Hello World from Webpacker')
+function ready(fn) {
+  if (document.readyState !== 'loading') {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+ready(() => {
+  oscilloscope();
+  ReactDOM.render(<PatchList />, document.querySelector('#patch-list'));
+  ReactDOM.render(<MidiWarning />, document.querySelector('#midi-info'));
+  ReactDOM.render(<MinilogueStatus />, document.querySelector('#minilogue-status'));
+});

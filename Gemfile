@@ -15,7 +15,11 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'carrierwave'
 gem 'file_validators'
 
-gem 'acts-as-taggable-on'
+#gem 'acts-as-taggable-on'
+# TODO: remove once new stable version > 4.0 is released
+# https://rubygems.org/gems/acts-as-taggable-on
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
+
 gem 'cancancan'
 
 group :development, :test do
