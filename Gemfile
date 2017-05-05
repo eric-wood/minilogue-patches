@@ -21,6 +21,7 @@ gem 'file_validators'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 gem 'cancancan'
+gem 'puma'
 
 group :development, :test do
   gem 'sqlite3'
@@ -38,7 +39,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'thin'
 end
 
 gem 'foreman'
