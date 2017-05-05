@@ -4,7 +4,7 @@ gem 'rails', '5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'font-awesome-sass'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpack-rails'
+gem 'webpacker'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
@@ -25,6 +25,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'listen'
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
   gem 'pry-rails'

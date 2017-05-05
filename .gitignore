@@ -22,3 +22,5 @@
 /public/webpack
 npm-debug.log
 
+/public/packs
+/node_modules
