@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_filter :requires_logged_out_user, only: %i(new create)
-  before_filter :requires_logged_in_user, only: %i(destroy)
+  before_action :requires_logged_out_user, only: %i(new create)
+  before_action :requires_logged_in_user, only: %i(destroy)
 
   def new
   end
