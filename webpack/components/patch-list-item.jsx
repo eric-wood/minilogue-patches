@@ -23,7 +23,8 @@ class PatchListItem extends React.Component {
       downloadCount: this.state.downloadCount + 1
     });
 
-    fetch(this.props.patch.download_url)
+    const headers = new Headers({ Accept: 'text/html' });
+    fetch(this.props.patch.download_url, { headers })
     .then((response) => response.arrayBuffer())
     .then((buffer) => {
       uploadPatch(this.props.midi.output, buffer);
